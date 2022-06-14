@@ -1,0 +1,95 @@
+{
+  "rc": {
+    "prefix": "rc",
+    "description": "React Component",
+    "body": [
+      "const $TM_FILENAME_BASE = () => {",
+      "\treturn (",
+      "\t\t<>$0</>",
+      "\t)",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE",
+      ""
+    ]
+  },
+  "exportDefault": {
+    "prefix": "exportDefault",
+    "description": "Export default",
+    "body": [
+      "export { default } from './${TM_DIRECTORY/(.*)\\\///}'",
+      ""
+    ]
+  },
+  "trc": {
+    "prefix": "trc",
+    "description": "Test React Component",
+    "body": [
+      "import { render } from '@testing-library/react'",
+      "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}'",
+      "",
+      "test('renders correctly', () => {",
+      "\t\tconst tree = render(",
+      "\t\t\t<${TM_FILENAME_BASE/(.*)\\..+$/$1/}$0/>",
+      "\t\t)",
+      "\t\texpect(true).toBe(false)",
+      "})",
+      ""
+    ]
+  },
+  "mui-moreOptionsMenu": {
+    "prefix": "mui-moreOptionsMenu",
+    "description": "Material UI More Options Menu",
+    "body": [
+      "import { useState } from 'react'",
+      "import { MenuItem } from '@mui/material'",
+      "import MoreOptionsMenu from '../../components/MoreOptionsMenu'",
+      "",
+      "const [openMenu, setOpenMenu] = useState<boolean>(false)",
+      "",
+      "<MoreOptionsMenu",
+      "\topen={openMenu}",
+      "\tonOpen={() => setOpenMenu(true)}",
+      "\tonClose={() => setOpenMenu(false)}",
+      ">",
+      "\t<MenuItem onClick={() => setOpenDeleteDialog(true)}>",
+      "\t\t$0",
+      "\t</MenuItem>",
+      "</MoreOptionsMenu>",
+      ""
+    ]
+  },
+  "mui-styledComponent": {
+    "prefix": "mui-styledComponent",
+    "description": "Create a custom component from Material-UI",
+    "body": [
+      "import { withStyles, createStyles, Theme } from '@mui/material/styles'",
+      "",
+      "const CustomComponent = withStyles((theme: Theme) =>",
+      "\tcreateStyles({",
+      "\t\troot: {",
+      "\t\t\t$0",
+      "\t\t}",
+      "\t})",
+      ")(Component)",
+      ""
+    ]
+  },
+  "mui-useStyles": {
+    "prefix": "mui-useStyles",
+    "description": "Create styles for your component",
+    "body": [
+      "import { makeStyles, createStyles, Theme } from '@mui/material/styles'",
+      "",
+      "const useStyles = makeStyles((theme: Theme) =>",
+      "\tcreateStyles({",
+      "\t\t$0",
+      "\t})",
+      ")",
+      "",
+      "// place the following line inside the component",
+      "const classes = useStyles()",
+      ""
+    ]
+  }
+}
